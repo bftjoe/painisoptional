@@ -1,20 +1,24 @@
-body {
+    	body {
     color: black;
     font-size: 16px;
     margin: 0px auto 0px auto;
-    width: 600px;
+    width: 700px;
 }
 
 #header {
-    border-bottom: 2px solid black;
+    border-bottom: 3px solid black;
     margin-bottom: 25px;
-    padding: 12px 0px 12px 0px;
+    padding: 10px 0px;
+}
+
+p {
+    width: 24em
 }
 
 #logo a {
     color: black;
     float: left;
-    font-size: 18px;
+    font-size: 21px;
     font-weight: bold;
     text-decoration: none;
 }
@@ -34,7 +38,7 @@ body {
 #footer {
     border-top: solid 2px black;
     color: #555;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 30px;
     padding: 12px 0px 12px 0px;
 }
@@ -45,15 +49,23 @@ body {
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 30px;
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 22px;
 }
 
-div.info {
+.info {
     color: #555;
     font-size: 14px;
     font-style: italic;
+}
+
+.yt{
+    border: 0
+}
+
+a[href]:hover{
+    text-decoration: underline !important
 }
