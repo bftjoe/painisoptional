@@ -3,7 +3,9 @@
 import           Data.Monoid (mappend)
 import           Hakyll
 
+import Text.Pandoc (WriterOptions, writerHtml5)
 
+import Control.Applicative (Alternative (..), (<$>))
 --------------------------------------------------------------------------------
 
 myFeedConfiguration :: FeedConfiguration
@@ -25,7 +27,7 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    match (fromList ["about.rst"]) $ do
+    match (fromList ["about.rst", "policy.markdown"]) $ do
         route   $ setExtension "htm"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/default.htm" defaultContext
@@ -33,19 +35,19 @@ main = hakyll $ do
 
     match "p/*" $ do
         route $ setExtension "htm"
-        compile $ pandocCompiler
+        compile $ pandocCompilerWith defaultHakyllReaderOptions myWriterOptions
             >>= loadAndApplyTemplate "templates/post.htm"    postCtx
             >>= saveSnapshot "content"
             >>= loadAndApplyTemplate "templates/default.htm" postCtx
             >>= relativizeUrls
 
-    create ["archive.htm"] $ do
+    create ["posts.htm"] $ do
         route idRoute
         compile $ do
             posts <- recentFirst =<< loadAll "p/*"
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
+                    constField "title" "Posts"            `mappend`
                     defaultContext
 
             makeItem ""
@@ -54,20 +56,19 @@ main = hakyll $ do
                 >>= relativizeUrls
 
 
-    match "index.htm" $ do                                                                                                                              
+    match "index.htm" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "p/*"
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Home"                `mappend`
-                    defaultContext
+            let indexCtx = field "post" $ const (itemBody <$> mostRecentPost)
+            let homeCtx = constField "title" "Home" `mappend` defaultContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
-                >>= loadAndApplyTemplate "templates/default.htm" indexCtx
+                >>= loadAndApplyTemplate "templates/default.htm" homeCtx
                 >>= relativizeUrls
-
+                
+                
+                
     match "templates/*" $ compile templateCompiler
     
     create ["atom.xml"] $ do
@@ -82,9 +83,18 @@ main = hakyll $ do
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" `mappend`
+    dateField "datetime" "%Y-%m-%d" `mappend`
     defaultContext
     
 feedCtx :: Context String
 feedCtx =
     bodyField "description" `mappend`
     postCtx
+    
+myWriterOptions :: WriterOptions
+myWriterOptions = defaultHakyllWriterOptions
+    { writerHtml5 = True
+    }
+    
+mostRecentPost :: Compiler (Item String)
+mostRecentPost = head <$> (recentFirst =<< loadAllSnapshots "p/*" "content")

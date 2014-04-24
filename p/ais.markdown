@@ -1,9 +1,10 @@
 ---
 title: Active Isolated Stretching
 author: Joseph Huang
-date: 2014-03-18
+date: 2014-04-23
 ---
 
+## Why AIS?
 
 - reduced pain
 - increased range of motion
@@ -11,6 +12,11 @@ date: 2014-03-18
 - gentle yet effective stretching of muscles, tendons, ligaments, and fascia
 - strengthening of the muscle which is being contracted
 
+
+## Try this stretch
+<iframe width="640" height="360" src="//www.youtube.com/embed/Eju-k-lsNXU?rel=0" class="yt" allowfullscreen><a href="//www.youtube.com/watch?v=Eju-k-lsNXU">Single Arm Hyperextension Stretch video</a></iframe>
+
+## More AIS
 - [SmartStretch AIS videos](http://www.smartstretch.com/)
 - [Active Isolated Stretching subreddit](http://www.reddit.com/r/ais)  
 
