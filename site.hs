@@ -29,7 +29,8 @@ main = hakyll $ do
 
     match (fromList ["about.rst", "policy.markdown"]) $ do
         route   $ setExtension "htm"
-        compile $ pandocCompiler
+        compile $ pandocCompilerWith defaultHakyllReaderOptions myWriterOptions
+            >>= loadAndApplyTemplate "templates/post.htm"    postCtx
             >>= loadAndApplyTemplate "templates/default.htm" defaultContext
             >>= relativizeUrls
 

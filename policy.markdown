@@ -1,10 +1,17 @@
 ---
 title: Policy Statement
 author: Joseph Huang
+date: 2014-04-24
 ---
 
 
-* Massage therapy at Pain is Optional is for stress management, muscular relaxation, and increased body awareness. Pain is Optional does not diagnose conditions.
+* Massage therapy at Pain is Optional is for stress management, muscular relaxation, and increased body awareness. Pain is Optional does not diagnose conditions. Pain is Optional offers Swedish, Deep Tissue, or Active Isolated Stretching during a session, with your choice as to which modality or combination of modalities you prefer.
+
+## Pricing
+
+* 60 minutes: $65
+* 75 minutes: $85
+* 90 minutes: $100
 
 ## Payment
 
@@ -26,6 +33,4 @@ author: Joseph Huang
 
 ## Communication
 
-* Please communicate what your massage technique and pressure prefernces to your therapist. Feel free to give any feedback to make your session better for you. 
-
-
+* Please communicate what your massage technique and pressure prefernces to your therapist. Feel free to give any feedback to make your session better for you.
